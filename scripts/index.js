@@ -4,8 +4,8 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 
 const config = {
-  birthdate: 'Jan 19, 2025',
-  name: 'HEHEHEHE'
+  birthdate: 'April 17, 2025',
+  name: 'HAPPY BIRTHDAYY!!'
 };
 
 function hideEverything() {
@@ -48,10 +48,10 @@ x = setInterval(function() {
     hw = w / 2, // half-width
     hh = h / 2,
     opts = {
-      strings: ['Soalnya aku', 'Bangunnya Siang', config.name],
-      charSize: 30,
-      charSpacing: 35,
-      lineHeight: 40,
+      strings: ['Semoga makin banyak hal kecil', 'yang bikin kamu bersyukur', config.name],
+      charSize: window.innerWidth < 768 ? 16 : 30, // Ukuran font responsif
+      charSpacing: window.innerWidth < 768 ? 20 : 35, // Jarak karakter
+      lineHeight: window.innerWidth < 768 ? 25 : 40, // Jarak baris
 
       cx: w / 2,
       cy: h / 2,
@@ -406,7 +406,7 @@ x = setInterval(function() {
   function anim() {
     window.requestAnimationFrame(anim);
 
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, w, h);
 
     ctx.translate(hw, hh);
@@ -427,12 +427,10 @@ x = setInterval(function() {
       letters.push(
         new Letter(
           opts.strings[i][j],
-          j * opts.charSpacing +
-            opts.charSpacing / 2 -
-            (opts.strings[i].length * opts.charSize) / 2,
-          i * opts.lineHeight +
-            opts.lineHeight / 2 -
-            (opts.strings.length * opts.lineHeight) / 2
+          j * opts.charSpacing + opts.charSpacing / 2 - 
+          (opts.strings[i].length * opts.charSize * 0.8), // Scaling posisi X
+          i * opts.lineHeight + opts.lineHeight / 2 - 
+          (opts.strings.length * opts.lineHeight * 0.8) // Scaling posisi Y
         )
       );
     }
@@ -479,6 +477,29 @@ x = setInterval(function() {
       if (step === 3) {
       }
       if (step === 4) {
+        // Membuat tombol
+        const btn = document.createElement('button');
+        btn.textContent = 'Buka Kartu Ulang Tahun';
+        Object.assign(btn.style, {
+          position: 'fixed',
+          bottom: '10%', // Lebih tinggi dari bawah
+          left: '50%',
+          transform: 'translateX(-50%)',
+          padding: '8px 16px', // Ukuran lebih kecil
+          fontSize: '14px',
+          color: '#fff',
+          backgroundColor: '#F64747',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          zIndex: '11'
+        });
+        
+        // Redirect saat tombol diklik
+        btn.onclick = () => window.location.href = 'card/card.html';
+        
+        // Menambahkan tombol ke body
+        document.body.appendChild(btn);
         return;
       }
       setTimeout(openBox, stepMinutes[step - 1]);

@@ -9,7 +9,7 @@ canvas {
   left: 0;
 }
 body {
-  background: #ffffff;
+  background: #000000;
   overflow: hidden;
 }
 .container {
@@ -179,4 +179,38 @@ li span {
       transform: translateY(100%);
       opacity: 0;
  }
+}
+
+@media (max-width: 768px) {
+  .giftbox {
+    width: 200px !important; /* Lebih kecil untuk HP */
+    height: 150px !important;
+    margin-left: -100px !important; /* Setengah dari width */
+  }
+
+  .container {
+    transform: scale(0.8); /* Perkecil kontainer countdown */
+    transform-origin: center;
+  }
+
+  #merrywrap {
+    bottom: 50px !important; /* Sesuaikan posisi kotak hadiah */
+  }
+
+  .giftbox:after {
+    font-size: 18px !important; /* Text "Click Me!" lebih kecil */
+    transform: rotate(-15deg) !important;
+  }
+
+  /* Perkecil angka countdown */
+  li span {
+    font-size: 3rem !important; /* Dari 4.5rem ke 3rem */
+  }
+
+  /* Perkecil judul "Countdown to your birthday" */
+  h1 {
+    font-size: 1.2em !important; /* Dari 1.5em ke 1.2em */
+  }
+
+  /* Perkecil teks "Click Me!" di kotak hadiah */
 }
